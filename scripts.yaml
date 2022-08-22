@@ -1,0 +1,146 @@
+# Baby Shark
+alias: Baby shark tag is scanned
+description: ""
+trigger:
+  - platform: tag
+    tag_id: YouTube.babyshark
+condition: []
+action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.shield_2
+    data:
+      media_content_type: cast
+      media_content_id: " { \"app_name\": \"youtube\", \"media_id\": \"4bMOTTJqGgM\" }"
+mode: single
+
+# Frozen 1
+alias: frozen tag is scanned
+description: ""
+trigger:
+  - platform: tag
+    tag_id: 04-DD-1E-8E-3A-74-80
+condition: []
+action:
+  - service: androidtv.adb_command
+    target:
+      entity_id: media_player.android_tv_living
+    data:
+      command: >-
+        am start -a android.intent.action.VIEW -d
+        https://www.disneyplus.com/video/64ff012f-ccff-4121-95c4-2729249c228d
+mode: single
+
+# Lion King
+alias: frozen tag is scanned
+description: ""
+trigger:
+  - platform: tag
+    tag_id: 04-DD-1E-8E-3A-74-80
+condition: []
+action:
+  - service: androidtv.adb_command
+    target:
+      entity_id: media_player.android_tv_living
+    data:
+      command: >-
+        am start -a android.intent.action.VIEW -d
+        https://www.disneyplus.com/video/87982e2b-5636-41a2-9d9a-5bc77cacb7d7
+mode: single
+
+
+
+
+# Frozen without direct play
+alias: frozen tag is scanned
+description: ""
+trigger:
+  - platform: tag
+    tag_id: 04-DD-1E-8E-3A-74-80
+condition: []
+action:
+  - service: androidtv.adb_command
+    target:
+      entity_id: media_player.android_tv_living
+    data:
+      command: >-
+        am start -a android.intent.action.VIEW -d
+        https://www.disneyplus.com/movies/frozen/4uKGzAJi3ROz
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: androidtv.adb_command
+    target:
+      entity_id: media_player.android_tv_living
+    data:
+      command: keyevent 23 && Input keyevent 23
+mode: single
+
+
+# Froze 1
+am start -a android.intent.action.VIEW -d https://www.disneyplus.com/video/64ff012f-ccff-4121-95c4-2729249c228d
+
+# frozen 2
+https://www.disneyplus.com/video/74351ae5-f6cd-4464-aeb6-8f4b10ca2649
+
+# lion king
+https://www.disneyplus.com/video/87982e2b-5636-41a2-9d9a-5bc77cacb7d7
+
+# Baby Shark
+service: media_player.play_media
+target:
+  entity_id: media_player.shield_2
+data:
+  media_content_type: cast
+  media_content_id: '
+    {
+      "app_name": "youtube",
+      "media_id": "4bMOTTJqGgM"
+    }'
+
+# Frozen Living
+service: androidtv.adb_command
+target:
+      entity_id: media_player.android_tv_living
+data:
+      command: am start -a android.intent.action.VIEW -d https://www.disneyplus.com/video/74351ae5-f6cd-4464-aeb6-8f4b10ca2649
+
+# Lion King Living
+service: androidtv.adb_command
+target:
+      entity_id: media_player.android_tv_living
+data:
+      command: am start -a android.intent.action.VIEW -d https://www.disneyplus.com/video/87982e2b-5636-41a2-9d9a-5bc77cacb7d7
+
+
+- service: media_player.select_source
+    target:
+      entity_id: media_player.android_tv_bedroom
+    data:
+      source: "com.netflix.ninja"
+
+- service: androidtv.adb_command
+    data:
+      entity_id: media_player.android_tv_living
+      command: am start -a android.intent.action.VIEW -d https://www.disneyplus.com/series/mickey-mouse-clubhouse/5iD5lXOdr1lj
+
+    #https://www.disneyplus.com/movies/frozen/4uKGzAJi3ROz
+    #https://www.disneyplus.com/video/74351ae5-f6cd-4464-aeb6-8f4b10ca2649
+
+    https://www.disneyplus.com/video/87982e2b-5636-41a2-9d9a-5bc77cacb7d7
+
+# friendly_name: Bedroom TV 2
+# supported_features: 152451
+# volume_level: 1
+# is_volume_muted: false
+# media_position_updated_at: 2022-08-07T13:04:38.288942+00:00
+# app_id: 233637DE
+# app_name: YouTube
+# media_position: 0.713
+# media_content_id: 4bMOTTJqGgM
+# media_title: Baby Shark Doo Doo Doo 60 Min | +Compilation | Baby Shark Remix | Baby Shark Official
+# entity_picture_local: /api/media_player_proxy/media_player.bedroom_tv_2?token=ccb97497e8a07b8ac4c56b28cbcc67d6819713951b5a122b2c8ea2f397a2ff48&cache=9898fc1f91a0eb39
+# entity_picture: https://i.ytimg.com/vi/4bMOTTJqGgM/hqdefault.jpg
+# media_duration: 3512.421

@@ -3,8 +3,11 @@ alias: Baby shark tag is scanned
 description: ""
 trigger:
   - platform: tag
-    tag_id: YouTube.babyshark
-condition: []
+    tag_id: 04-94-DA-05-19-6C-80
+condition:
+  - condition: state
+    entity_id: input_boolean.toggle_helena_remote
+    state: "on"
 action:
   - service: media_player.play_media
     target:
@@ -20,7 +23,10 @@ description: ""
 trigger:
   - platform: tag
     tag_id: 04-DD-1E-8E-3A-74-80
-condition: []
+condition:
+  - condition: state
+    entity_id: input_boolean.toggle_helena_remote
+    state: "on"
 action:
   - service: androidtv.adb_command
     target:
@@ -48,7 +54,9 @@ action:
         https://www.disneyplus.com/video/87982e2b-5636-41a2-9d9a-5bc77cacb7d7
 mode: single
 
-
+- service: androidtv.learn_sendevent
+  data:
+    entity_id: media_player.android_tv_living
 
 
 # Frozen without direct play
